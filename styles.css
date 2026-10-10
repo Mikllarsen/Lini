@@ -1,33 +1,128 @@
 :root {
-    --primary-color: #0ea5e9; /* Professional blue */
-    --primary-hover: #0284c7;
-    --bg-color: #f8fafc;
+    --primary-color: #e11d48; /* Elegant deep red/rose */
+    --primary-hover: #be123c;
+    --bg-color: #fff1f2; /* Soft warm background */
     --card-bg: #ffffff;
-    --text-main: #1e293b;
+    --text-main: #334155;
     --text-muted: #64748b;
-    --border-color: #e2e8f0;
-    --radius: 12px;
-    --shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
-    --shadow-hover: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
-    --transition: all 0.3s ease;
+    --border-color: #fecdd3;
+    --radius: 16px;
+    --shadow: 0 10px 15px -3px rgb(0 0 0 / 0.05), 0 4px 6px -4px rgb(0 0 0 / 0.05);
+    --shadow-hover: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+    --transition: all 0.4s ease;
 }
 
 body {
     background-color: var(--bg-color);
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    font-family: "Georgia", "Times New Roman", serif; /* Elegant serif font */
     color: var(--text-main);
-    line-height: 1.6;
+    line-height: 1.8;
     margin: 0;
     padding: 0;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 }
 
+.romantic-header h1 {
+    color: var(--primary-color);
+    font-weight: normal;
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.mature-text p {
+    font-size: 1.1rem;
+    color: #475569;
+}
+
+.text-center {
+    text-align: center;
+}
+
+/* Hidden elements */
+.hidden-content {
+    display: none !important;
+}
+
+/* Lock Screen specific styles */
+.lock-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 80vh;
+}
+
+.unlock-wrapper {
+    position: relative;
+    width: 120px;
+    height: 120px;
+    margin: 2rem auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.unlock-btn {
+    position: relative;
+    z-index: 10;
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    border: none;
+    background-color: var(--primary-color);
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(225, 29, 72, 0.4);
+    transition: transform 0.1s;
+    user-select: none;
+    -webkit-user-select: none;
+    outline: none;
+    font-family: inherit;
+}
+
+.unlock-btn:active {
+    transform: scale(0.95);
+    background-color: var(--primary-hover);
+}
+
+/* SVG Progress Ring */
+.progress-ring {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 120px;
+    height: 120px;
+    pointer-events: none;
+}
+
+.progress-svg {
+    width: 100%;
+    height: 100%;
+    transform: rotate(-90deg);
+}
+
+.progress-circle-bg {
+    fill: none;
+    stroke: var(--border-color);
+    stroke-width: 4;
+}
+
+.progress-circle {
+    fill: none;
+    stroke: var(--primary-hover);
+    stroke-width: 8;
+    stroke-linecap: round;
+    stroke-dasharray: 283; /* 2 * pi * r (r=45) = ~283 */
+    stroke-dashoffset: 283; /* Starts empty */
+    transition: stroke-dashoffset 0.1s linear;
+}
+
 /* Typography */
 h1, h2, h3 {
     color: var(--text-main);
-    font-weight: 700;
-    line-height: 1.2;
+    font-weight: normal;
+    line-height: 1.3;
     margin-top: 0;
     margin-bottom: 1rem;
 }
@@ -67,36 +162,38 @@ p {
 }
 
 /* List Group Component */
-.list-group {
+.elegant-list {
     list-style-type: none;
     padding: 0;
-    margin: 2rem 0;
+    margin: 2.5rem 0;
 }
 
 .list-item {
-    background-color: var(--bg-color);
-    border: 1px solid var(--border-color);
-    border-radius: 8px;
-    padding: 1.25rem;
-    margin-bottom: 0.75rem;
+    background-color: transparent;
+    border-bottom: 1px solid var(--border-color);
+    padding: 1rem 0;
+    margin-bottom: 0;
     color: var(--text-main);
     transition: var(--transition);
     display: flex;
-    align-items: center;
+    align-items: flex-start;
+    font-size: 1.05rem;
+}
+
+.list-item:last-child {
+    border-bottom: none;
 }
 
 .list-item:hover {
-    border-color: var(--primary-color);
-    transform: translateX(5px);
+    padding-left: 10px;
 }
 
 .list-item::before {
-    content: "•";
+    content: "♥";
     color: var(--primary-color);
-    font-weight: bold;
-    font-size: 1.5rem;
+    font-size: 1.2rem;
     margin-right: 1rem;
-    line-height: 1;
+    line-height: 1.5;
 }
 
 /* Footer Component */

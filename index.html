@@ -14,31 +14,50 @@
     <div class="spinner"></div>
 </div>
 
-<main class="container">
+<!-- Lock Screen -->
+<div id="lock-screen" class="container lock-container">
+    <article class="card text-center">
+        <h2>En særlig besked</h2>
+        <p>Hold knappen nede for at låse op.</p>
+
+        <div class="unlock-wrapper">
+            <button id="unlock-btn" class="unlock-btn">Hold nede</button>
+            <div class="progress-ring">
+                <svg class="progress-svg" viewBox="0 0 100 100">
+                    <circle class="progress-circle-bg" cx="50" cy="50" r="45"></circle>
+                    <circle class="progress-circle" id="progress-circle" cx="50" cy="50" r="45"></circle>
+                </svg>
+            </div>
+        </div>
+    </article>
+</div>
+
+<!-- Main Content (Hidden by default) -->
+<main id="main-content" class="container hidden-content">
     <article class="card">
-        <header>
-            <h1>Til min sygt smukke kæreste Lini ❤️🔥</h1>
+        <header class="romantic-header">
+            <h1>Til min elskede Line ❤️</h1>
         </header>
 
-        <section class="content">
-            <p>Yo, velkommen til min lille side. Jeg har lavet det her fordi jeg bare lige skal flexe min kæreste Line (men jeg kalder hende for Lini, fordi det er bare mega cute). Seriøst bro, hun er den pæneste i hele verden, no cap 🧢.</p>
+        <section class="content mature-text">
+            <p>Velkommen. Jeg har skabt denne lille side for at udtrykke, hvor meget du, min kære Line (eller Lini, som jeg elsker at kalde dig), betyder for mig. Det er sjældent, at ord slår til, når man forsøger at beskrive et menneske, der rummer så meget skønhed og varme, som du gør.</p>
 
-            <p>Folk spørger, "hvad ser du i hende?" og jeg er bare sådan, bro, hvor skal jeg overhovedet starte? 💀</p>
+            <p>Hvis nogen nogensinde spurgte mig, hvad der gør dig så speciel, ville jeg have svært ved at vælge, hvor jeg skulle begynde.</p>
 
-            <ul class="list-group">
-                <li class="list-item">Hendes smil... det er bare helt sygt, det lyser bare alt op 🥺✨</li>
-                <li class="list-item">Hun er mega grineren! Vi kan bare chille og grine af de dummeste ting 😂</li>
-                <li class="list-item">Hendes øjne er bare... wow 😍 Jeg dør lidt hver gang hun kigger på mig.</li>
-                <li class="list-item">Hun forstår mig bare 100%. Det er aldrig akavet, vi kan bare være os selv.</li>
-                <li class="list-item">Hun er bare en kæmpe W i mit liv! 🏆🐐</li>
+            <ul class="list-group elegant-list">
+                <li class="list-item">Dit smil har en helt særlig evne til at lyse rummet op og bringe ro i mit sind.</li>
+                <li class="list-item">Vi deler en fantastisk humor. Tiden flyver afsted, når vi bare er sammen og griner af livets små tilfældigheder.</li>
+                <li class="list-item">Dine øjne rummer en dybde og en varme, der betager mig fuldstændigt, hver gang vores blikke mødes.</li>
+                <li class="list-item">Du forstår mig på et niveau, jeg aldrig har oplevet før. Sammen med dig kan jeg altid bare være mig selv.</li>
+                <li class="list-item">At have dig i mit liv er den største gave, jeg overhovedet kunne ønske mig.</li>
             </ul>
 
-            <p>Altså, hun er bare <span class="highlight">the goat</span>. Der er ingen der kommer i nærheden af hende tbh.</p>
+            <p>Sandheden er, at der simpelthen ikke er nogen anden som dig. Du er helt igennem enestående.</p>
         </section>
 
         <footer class="site-footer">
-            <p>Lini, hvis du læser det her: Jeg elsker dig mega meget skat! ❤️</p>
-            <p>Du er seriøst den bedste kæreste man kan ønske sig.</p>
+            <p>Line, hvis du læser dette: Jeg elsker dig af hele mit hjerte. ❤️</p>
+            <p>Du er den mest fantastiske kæreste, man overhovedet kunne håbe på.</p>
         </footer>
     </article>
 </main>

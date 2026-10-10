@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
     // Ensure loading screen stays for at least 1.5 seconds for effect
-    const minLoadTime = 1500;
+    const minLoadTime = 7500;
     const startTime = Date.now();
 
     window.addEventListener('load', () => {
@@ -28,7 +28,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     let pressTimer;
     let progressInterval;
-    const requiredHoldTime = 2000; // 2 seconds
+    const requiredHoldTime = 6000; // 2 seconds
     const circumference = 283; // 2 * pi * 45
 
     function startPress(e) {

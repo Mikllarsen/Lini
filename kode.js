@@ -10,7 +10,7 @@
  * Sæt svar: [] for at slå spørgsmålet fra helt.
  */
 const KODE = {
-    spoergsmaal: 'husk at skrive her',
-    svar: ['husk at skrive her'],
-    hint: 'husk at skrive her',
+    spoergsmaal: 'Hvad var det første jeg skrev til dig?',
+    svar: ['you good', 'u good', 'yougood', 'you good?'],
+    hint: 'Det var på engelsk, og kun to ord',
 };

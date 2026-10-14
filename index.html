@@ -11,10 +11,10 @@
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>❤️</text></svg>">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;600&family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&family=Inter:wght@400;500&display=swap" rel="stylesheet">
     <!-- Bump ?v= whenever styles.css or script.js change, so phones don't use an old cached copy -->
-    <link rel="stylesheet" href="styles.css?v=5">
-    <script src="script.js?v=5" defer></script>
+    <link rel="stylesheet" href="styles.css?v=6">
+    <script src="script.js?v=6" defer></script>
 </head>
 <body>
 
@@ -47,35 +47,61 @@
     </div>
 </section>
 
+<!-- Envelope transition -->
+<div id="envelope-scene" class="envelope-scene" hidden aria-hidden="true">
+    <div class="envelope" id="envelope">
+        <div class="env-back"></div>
+        <div class="env-paper">
+            <span class="env-paper-line"></span>
+            <span class="env-paper-line"></span>
+            <span class="env-paper-line short"></span>
+        </div>
+        <div class="env-pocket"></div>
+        <div class="env-flap"></div>
+        <div class="env-seal"><i class="heart"></i></div>
+    </div>
+    <p class="env-caption">Til Lini</p>
+</div>
+
 <!-- Letter -->
-<main id="main-content" class="screen letter" hidden>
+<main id="main-content" class="letter" hidden>
     <article class="paper">
-        <header class="letter-header">
-            <p class="eyebrow">Til min elskede</p>
-            <h1>Line</h1>
-            <span class="divider" aria-hidden="true"><i class="heart"></i></span>
+        <header class="letter-top reveal">
+            <div class="stamp" aria-hidden="true"><i class="heart"></i></div>
+            <p class="letter-date" id="letter-date"></p>
         </header>
 
+        <h1 class="salutation reveal">Min elskede Line,</h1>
+
         <div class="letter-body">
-            <p>husk at skrive her</p>
+            <p class="reveal drop-cap">husk at skrive her</p>
 
-            <p>husk at skrive her</p>
+            <p class="reveal">husk at skrive her</p>
 
-            <ul class="reasons">
-                <li>husk at skrive her</li>
-                <li>husk at skrive her</li>
-                <li>husk at skrive her</li>
-                <li>husk at skrive her</li>
-                <li>husk at skrive her</li>
-            </ul>
+            <section class="loves reveal">
+                <h2 class="loves-title">Ting jeg elsker ved dig</h2>
+                <ul class="loves-list">
+                    <li class="reveal"><i class="heart"></i><span>husk at skrive her</span></li>
+                    <li class="reveal"><i class="heart"></i><span>husk at skrive her</span></li>
+                    <li class="reveal"><i class="heart"></i><span>husk at skrive her</span></li>
+                    <li class="reveal"><i class="heart"></i><span>husk at skrive her</span></li>
+                    <li class="reveal"><i class="heart"></i><span>husk at skrive her</span></li>
+                </ul>
+            </section>
 
-            <p>husk at skrive her</p>
+            <blockquote class="promise reveal">
+                <span class="ornament" aria-hidden="true"><i class="heart"></i></span>
+                <p>husk at skrive her</p>
+            </blockquote>
         </div>
 
-        <footer class="letter-footer">
-            <p>Kærlig hilsen</p>
+        <footer class="sign-off reveal">
+            <p class="sign-off-greeting">Kærlig hilsen</p>
             <p class="signature">Din Mikkel</p>
+            <div class="wax-seal" aria-hidden="true"><i class="heart"></i></div>
         </footer>
+
+        <p class="postscript reveal"><span>P.S.</span> husk at skrive her</p>
     </article>
 </main>
 

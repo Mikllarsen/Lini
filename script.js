@@ -45,7 +45,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let hintReset = null;
 
     function tick(now) {
-        const progress = Math.min((now - holdStart) / HOLD_TIME, 1);
+        const progress = Math.max(0, Math.min((now - holdStart) / HOLD_TIME, 1));
         ring.style.strokeDashoffset = circumference * (1 - progress);
         hold.style.setProperty('--progress', progress);
 
@@ -124,13 +124,84 @@ document.addEventListener('DOMContentLoaded', () => {
         setTimeout(() => lockScreen.classList.add('is-leaving'), 700);
         setTimeout(() => {
             lockScreen.hidden = true;
-            content.classList.add('is-entering');
-            content.hidden = false;
-            window.scrollTo(0, 0);
-            // Force a reflow so the entering transition runs
-            void content.offsetWidth;
-            content.classList.remove('is-entering');
+            playEnvelope();
         }, 1300);
+    }
+
+    // ---------- Envelope → letter ----------
+    const scene = document.getElementById('envelope-scene');
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const wait = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
+
+    async function playEnvelope() {
+        if (!scene || reduceMotion) {
+            showLetter();
+            return;
+        }
+
+        scene.hidden = false;
+        void scene.offsetWidth;
+
+        // Each step adds a class; styles.css animates the change
+        const steps = [
+            ['is-in', 1400],       // envelope floats up
+            ['is-unsealed', 500],  // wax seal pops
+            ['is-open', 900],      // flap opens
+            ['is-rising', 1100],   // letter slides out
+            ['is-out', 350],       // envelope falls away, letter grows
+        ];
+        for (const [step, duration] of steps) {
+            scene.classList.add(step);
+            await wait(duration);
+        }
+
+        showLetter();
+        await wait(900);
+        scene.remove();
+    }
+
+    function showLetter() {
+        const date = document.getElementById('letter-date');
+        if (date) {
+            date.textContent = new Date().toLocaleDateString('da-DK', {
+                day: 'numeric', month: 'long', year: 'numeric',
+            });
+        }
+
+        content.classList.add('is-entering');
+        content.hidden = false;
+        window.scrollTo(0, 0);
+        void content.offsetWidth;
+        content.classList.remove('is-entering');
+
+        revealOnScroll();
+    }
+
+    function revealOnScroll() {
+        const items = [...content.querySelectorAll('.reveal')];
+
+        if (reduceMotion || !('IntersectionObserver' in window)) {
+            items.forEach((item) => item.classList.add('is-visible'));
+            return;
+        }
+
+        // What's on screen right away fades in one after another,
+        // the rest fades in as she scrolls down to it
+        let queue = 0;
+        let baseDelay = 0.6; // wait for the paper to settle the first time
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                if (!entry.isIntersecting) return;
+                observer.unobserve(entry.target);
+                entry.target.style.transitionDelay = `${baseDelay + queue * 0.18}s`;
+                queue++;
+                entry.target.classList.add('is-visible');
+            });
+            baseDelay = 0.05;
+            setTimeout(() => { queue = 0; }, 400);
+        }, { rootMargin: '0px 0px -8% 0px' });
+
+        items.forEach((item) => observer.observe(item));
     }
 
     // Pointer (mouse + touch + pen)

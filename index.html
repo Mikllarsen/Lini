@@ -12,9 +12,10 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;600&family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&family=Inter:wght@400;500&display=swap" rel="stylesheet">
-    <!-- Bump ?v= whenever styles.css or script.js change, so phones don't use an old cached copy -->
-    <link rel="stylesheet" href="styles.css?v=6">
-    <script src="script.js?v=6" defer></script>
+    <!-- Bump ?v= whenever styles.css, media.js or script.js change, so phones don't use an old cached copy -->
+    <link rel="stylesheet" href="styles.css?v=7">
+    <script src="media.js?v=7" defer></script>
+    <script src="script.js?v=7" defer></script>
 </head>
 <body>
 
@@ -74,7 +75,7 @@
         <h1 class="salutation reveal">Min elskede Line,</h1>
 
         <div class="letter-body">
-            <p class="reveal drop-cap">husk at skrive her</p>
+            <p class="reveal">husk at skrive her</p>
 
             <p class="reveal">husk at skrive her</p>
 
@@ -87,6 +88,12 @@
                     <li class="reveal"><i class="heart"></i><span>husk at skrive her</span></li>
                     <li class="reveal"><i class="heart"></i><span>husk at skrive her</span></li>
                 </ul>
+            </section>
+
+            <!-- Billeder og videoer: tilføj dem i media.js -->
+            <section class="memories" id="memories" hidden>
+                <h2 class="memories-title reveal">Vores første to måneder</h2>
+                <div class="memories-grid" id="memories-grid"></div>
             </section>
 
             <blockquote class="promise reveal">
@@ -104,6 +111,13 @@
         <p class="postscript reveal"><span>P.S.</span> husk at skrive her</p>
     </article>
 </main>
+
+<!-- Fullscreen view when a photo is tapped -->
+<div id="lightbox" class="lightbox" hidden>
+    <button class="lightbox-close" id="lightbox-close" type="button" aria-label="Luk">&times;</button>
+    <img id="lightbox-img" alt="">
+    <p class="lightbox-caption" id="lightbox-caption"></p>
+</div>
 
 </body>
 </html>

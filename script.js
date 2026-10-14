@@ -15,6 +15,85 @@ document.addEventListener('DOMContentLoaded', () => {
         }, remaining);
     });
 
+    // ---------- Photos and videos (listed in media.js) ----------
+    const memories = document.getElementById('memories');
+    const grid = document.getElementById('memories-grid');
+    const minder = typeof MINDER !== 'undefined' ? MINDER : [];
+
+    if (memories && grid && minder.length) {
+        memories.hidden = false;
+
+        minder.forEach((minde, i) => {
+            const figure = document.createElement('figure');
+            figure.className = 'polaroid reveal';
+            figure.style.setProperty('--tilt', `${i % 2 ? 1.8 : -1.8}deg`);
+
+            const frame = document.createElement('div');
+            frame.className = 'polaroid-frame';
+            const isVideo = minde.type === 'video';
+
+            const showPlaceholder = () => {
+                frame.innerHTML = '';
+                frame.classList.add('is-missing');
+                frame.textContent = isVideo ? 'husk at tilføje video' : 'husk at tilføje billede';
+            };
+
+            if (isVideo) {
+                const video = document.createElement('video');
+                // #t=0.1 makes iPhones show the first frame instead of a black box
+                video.src = `${minde.fil}#t=0.1`;
+                video.controls = true;
+                video.playsInline = true;
+                video.preload = 'metadata';
+                video.addEventListener('error', showPlaceholder);
+                frame.appendChild(video);
+            } else {
+                const img = document.createElement('img');
+                img.src = minde.fil;
+                img.alt = minde.tekst || '';
+                img.loading = 'lazy';
+                img.addEventListener('error', showPlaceholder);
+                img.addEventListener('click', () => openLightbox(img.src, minde.tekst));
+                frame.appendChild(img);
+            }
+
+            figure.appendChild(frame);
+            if (minde.tekst) {
+                const caption = document.createElement('figcaption');
+                caption.textContent = minde.tekst;
+                figure.appendChild(caption);
+            }
+            grid.appendChild(figure);
+        });
+    }
+
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightbox-img');
+    const lightboxCaption = document.getElementById('lightbox-caption');
+
+    function openLightbox(src, text) {
+        if (!lightbox) return;
+        lightboxImg.src = src;
+        lightboxCaption.textContent = text || '';
+        lightbox.hidden = false;
+        void lightbox.offsetWidth;
+        lightbox.classList.add('is-open');
+        document.body.style.overflow = 'hidden';
+    }
+
+    function closeLightbox() {
+        lightbox.classList.remove('is-open');
+        document.body.style.overflow = '';
+        setTimeout(() => { lightbox.hidden = true; }, 300);
+    }
+
+    if (lightbox) {
+        lightbox.addEventListener('click', closeLightbox);
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && !lightbox.hidden) closeLightbox();
+        });
+    }
+
     // ---------- Hold to unlock ----------
     const button = document.getElementById('unlock-btn');
     const ring = document.getElementById('hold-ring-fill');

@@ -3,61 +3,70 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#fbf6f2">
     <title>Til min Lini ❤️</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>❤️</text></svg>">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&family=Inter:wght@400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
     <script src="script.js" defer></script>
 </head>
 <body>
 
-<!-- Loading Overlay -->
-<div id="loader-overlay">
-    <div class="spinner"></div>
+<!-- Intro -->
+<div id="loader" class="loader" aria-hidden="true">
+    <svg class="loader-heart" viewBox="0 0 24 24"><path d="M12 21s-7.5-4.6-9.6-9.2C.9 8.4 3 4.5 6.7 4.5c2.1 0 3.6 1.2 4.3 2.4.4.7 1.6.7 2 0 .7-1.2 2.2-2.4 4.3-2.4 3.7 0 5.8 3.9 4.3 7.3C19.5 16.4 12 21 12 21z"/></svg>
 </div>
 
-<!-- Lock Screen -->
-<div id="lock-screen" class="container lock-container">
-    <article class="card text-center">
-        <h2>Til min elskede Lini❤️</h2>
-        <p>Den bliver bedre bare vent</p>
+<!-- Lock screen -->
+<section id="lock-screen" class="screen lock">
+    <div class="lock-inner">
+        <p class="eyebrow">Til</p>
+        <h1 class="lock-title">min elskede Lini</h1>
+        <p class="lock-sub">Den bliver bedre bare vent</p>
 
-        <div class="unlock-wrapper">
-            <button id="unlock-btn" class="unlock-btn">Hold nede</button>
-            <div class="progress-ring">
-                <svg class="progress-svg" viewBox="0 0 100 100">
-                    <circle class="progress-circle-bg" cx="50" cy="50" r="45"></circle>
-                    <circle class="progress-circle" id="progress-circle" cx="50" cy="50" r="45"></circle>
-                </svg>
-            </div>
+        <div class="hold">
+            <svg class="hold-ring" viewBox="0 0 120 120" aria-hidden="true">
+                <circle class="hold-ring-track" cx="60" cy="60" r="54"/>
+                <circle class="hold-ring-fill" id="hold-ring-fill" cx="60" cy="60" r="54"/>
+            </svg>
+            <button id="unlock-btn" class="hold-btn" type="button" aria-label="Hold nede for at åbne">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7.5-4.6-9.6-9.2C.9 8.4 3 4.5 6.7 4.5c2.1 0 3.6 1.2 4.3 2.4.4.7 1.6.7 2 0 .7-1.2 2.2-2.4 4.3-2.4 3.7 0 5.8 3.9 4.3 7.3C19.5 16.4 12 21 12 21z"/></svg>
+            </button>
         </div>
-    </article>
-</div>
+        <p class="hold-hint">Hold nede</p>
+    </div>
+</section>
 
-<!-- Main Content (Hidden by default) -->
-<main id="main-content" class="container hidden-content">
-    <article class="card">
-        <header class="romantic-header">
-            <h1>Til min elskede Line ❤️</h1>
+<!-- Letter -->
+<main id="main-content" class="screen letter" hidden>
+    <article class="paper">
+        <header class="letter-header">
+            <p class="eyebrow">Til min elskede</p>
+            <h1>Line</h1>
+            <span class="divider" aria-hidden="true">♥</span>
         </header>
 
-        <section class="content mature-text">
+        <div class="letter-body">
             <p>husk at skrive her</p>
 
             <p>husk at skrive her</p>
 
-            <ul class="list-group elegant-list">
-                <li class="list-item">husk at skrive her</li>
-                <li class="list-item">husk at skrive her</li>
-                <li class="list-item">husk at skrive her</li>
-                <li class="list-item">husk at skrive her</li>
-                <li class="list-item">husk at skrive her</li>
+            <ul class="reasons">
+                <li>husk at skrive her</li>
+                <li>husk at skrive her</li>
+                <li>husk at skrive her</li>
+                <li>husk at skrive her</li>
+                <li>husk at skrive her</li>
             </ul>
 
             <p>husk at skrive her</p>
-        </section>
+        </div>
 
-        <footer class="site-footer">
+        <footer class="letter-footer">
             <p>husk at skrive her</p>
-            <p>husk at skrive her</p>
+            <p class="signature">husk at skrive her</p>
         </footer>
     </article>
 </main>

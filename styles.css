@@ -32,8 +32,11 @@ body {
     background:
         radial-gradient(ellipse 80% 60% at 50% 0%, var(--bg-glow), transparent 70%),
         var(--bg);
-    background-attachment: fixed;
+    background-repeat: no-repeat;
     color: var(--ink);
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+    overscroll-behavior-y: none;
     font-family: var(--sans);
     font-size: 16px;
     line-height: 1.7;
@@ -91,7 +94,11 @@ body {
 .screen {
     min-height: 100vh;
     min-height: 100dvh;
-    padding: 3rem 1.25rem;
+    padding:
+        max(3rem, env(safe-area-inset-top))
+        max(1.25rem, env(safe-area-inset-right))
+        max(3rem, env(safe-area-inset-bottom))
+        max(1.25rem, env(safe-area-inset-left));
     display: flex;
     align-items: center;
     justify-content: center;
@@ -113,6 +120,10 @@ body {
 .lock {
     position: relative;
     overflow: hidden;
+    /* Long-pressing anywhere shouldn't select text or open the iOS callout */
+    user-select: none;
+    -webkit-user-select: none;
+    -webkit-touch-callout: none;
 }
 
 .lock-inner {
@@ -145,6 +156,7 @@ body {
     font-size: clamp(2.4rem, 9vw, 3.5rem);
     line-height: 1.1;
     letter-spacing: -0.01em;
+    text-wrap: balance;
 }
 
 .lock-sub {
@@ -389,6 +401,7 @@ body {
 
 .letter-body p {
     margin: 0 0 1.4em;
+    text-wrap: pretty;
 }
 
 .reasons {
@@ -438,6 +451,80 @@ body {
     font-style: italic;
     font-size: 1.6rem;
     color: var(--ink);
+}
+
+/* ---------- Phones ---------- */
+
+@media (max-width: 480px) {
+    .letter {
+        padding-left: max(0.75rem, env(safe-area-inset-left));
+        padding-right: max(0.75rem, env(safe-area-inset-right));
+        padding-top: max(1rem, env(safe-area-inset-top));
+    }
+
+    .paper {
+        margin: 0 auto;
+        padding: 2.5rem 1.4rem 2.25rem;
+        border-radius: 6px;
+    }
+
+    .letter-header {
+        margin-bottom: 2rem;
+    }
+
+    .letter-body {
+        font-size: 1.2rem;
+        line-height: 1.65;
+    }
+
+    .reasons {
+        margin: 1.75rem 0;
+    }
+
+    .reasons li {
+        padding-left: 2.25rem;
+    }
+
+    .reasons li::before {
+        top: 1.05rem;
+    }
+
+    .letter-footer {
+        margin-top: 2.25rem;
+    }
+}
+
+/* Short screens, e.g. a phone in landscape: keep the button on screen */
+@media (max-height: 560px) {
+    .screen.lock {
+        padding-top: max(1rem, env(safe-area-inset-top));
+        padding-bottom: max(1rem, env(safe-area-inset-bottom));
+    }
+
+    .lock-title {
+        font-size: clamp(1.9rem, 7vh, 2.6rem);
+    }
+
+    .lock-sub {
+        margin-top: 0.5rem;
+        font-size: 1.05rem;
+    }
+
+    .hold {
+        width: 104px;
+        height: 104px;
+        margin: 1.25rem auto 0.75rem;
+    }
+
+    .hold-btn {
+        width: 78px;
+        height: 78px;
+    }
+
+    .hold-btn svg {
+        width: 30px;
+        height: 30px;
+    }
 }
 
 /* ---------- Motion preferences ---------- */

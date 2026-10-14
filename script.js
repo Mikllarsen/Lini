@@ -30,7 +30,7 @@ document.addEventListener('DOMContentLoaded', () => {
         [0, 'Bliv ved…'],
         [0.3, 'Lidt endnu…'],
         [0.6, 'Næsten…'],
-        [0.9, 'Nu ♥'],
+        [0.9, 'Nu \u2665\uFE0E'],
     ];
     const IDLE_HINT = 'Hold nede';
     const EARLY_HINT = 'Ikke slippe endnu 😉';
@@ -104,8 +104,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const heart = document.createElement('span');
             const angle = (i / 16) * Math.PI * 2 + Math.random() * 0.4;
             const distance = 90 + Math.random() * 80;
-            heart.className = 'burst';
-            heart.textContent = '♥';
+            heart.className = 'heart burst';
             heart.style.setProperty('--x', `${Math.cos(angle) * distance}px`);
             heart.style.setProperty('--y', `${Math.sin(angle) * distance}px`);
             heart.style.setProperty('--r', `${Math.random() * 60 - 30}deg`);
@@ -118,7 +117,7 @@ document.addEventListener('DOMContentLoaded', () => {
         unlocked = true;
         cancelAnimationFrame(frame);
         button.classList.remove('is-holding');
-        hint.textContent = 'Til dig ♥';
+        hint.textContent = 'Til dig \u2665\uFE0E';
         burstHearts();
         if (navigator.vibrate) navigator.vibrate([30, 60, 30]);
 

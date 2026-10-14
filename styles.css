@@ -166,10 +166,34 @@ body {
     font-size: 1.2rem;
     line-height: 1.5;
     color: var(--ink-soft);
+    text-wrap: balance;
+}
+
+/* Heart shape drawn with a mask, so it's always rose-colored
+   (the ♥ character turns into a black emoji on iPhone) */
+.heart {
+    display: inline-block;
+    width: 1em;
+    height: 1em;
+    background-color: currentColor;
+    -webkit-mask: var(--heart-shape) center / contain no-repeat;
+    mask: var(--heart-shape) center / contain no-repeat;
+    vertical-align: -0.12em;
+}
+
+:root {
+    --heart-shape: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M12 21s-7.5-4.6-9.6-9.2C.9 8.4 3 4.5 6.7 4.5c2.1 0 3.6 1.2 4.3 2.4.4.7 1.6.7 2 0 .7-1.2 2.2-2.4 4.3-2.4 3.7 0 5.8 3.9 4.3 7.3C19.5 16.4 12 21 12 21z'/%3E%3C/svg%3E");
 }
 
 /* Slowly drifting hearts in the background */
-.floating-hearts span {
+.floating-hearts {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    pointer-events: none;
+}
+
+.floating-hearts .heart {
     position: absolute;
     bottom: -2rem;
     color: var(--rose);
@@ -178,14 +202,14 @@ body {
     pointer-events: none;
 }
 
-.floating-hearts span:nth-child(1) { left: 8%;  font-size: 0.9rem; animation-delay: 0s; }
-.floating-hearts span:nth-child(2) { left: 22%; font-size: 1.4rem; animation-delay: 5s; animation-duration: 18s; }
-.floating-hearts span:nth-child(3) { left: 36%; font-size: 0.8rem; animation-delay: 9s; }
-.floating-hearts span:nth-child(4) { left: 52%; font-size: 1.1rem; animation-delay: 2s; animation-duration: 16s; }
-.floating-hearts span:nth-child(5) { left: 66%; font-size: 0.9rem; animation-delay: 7s; }
-.floating-hearts span:nth-child(6) { left: 78%; font-size: 1.5rem; animation-delay: 11s; animation-duration: 20s; }
-.floating-hearts span:nth-child(7) { left: 90%; font-size: 1rem;  animation-delay: 4s; }
-.floating-hearts span:nth-child(8) { left: 45%; font-size: 1.2rem; animation-delay: 13s; animation-duration: 17s; }
+.floating-hearts .heart:nth-child(1) { left: 8%;  font-size: 0.9rem; animation-delay: 0s; }
+.floating-hearts .heart:nth-child(2) { left: 22%; font-size: 1.4rem; animation-delay: 5s; animation-duration: 18s; }
+.floating-hearts .heart:nth-child(3) { left: 36%; font-size: 0.8rem; animation-delay: 9s; }
+.floating-hearts .heart:nth-child(4) { left: 52%; font-size: 1.1rem; animation-delay: 2s; animation-duration: 16s; }
+.floating-hearts .heart:nth-child(5) { left: 66%; font-size: 0.9rem; animation-delay: 7s; }
+.floating-hearts .heart:nth-child(6) { left: 78%; font-size: 1.5rem; animation-delay: 11s; animation-duration: 20s; }
+.floating-hearts .heart:nth-child(7) { left: 90%; font-size: 1rem;  animation-delay: 4s; }
+.floating-hearts .heart:nth-child(8) { left: 45%; font-size: 1.2rem; animation-delay: 13s; animation-duration: 17s; }
 
 @keyframes drift {
     0%   { transform: translate(0, 0) rotate(-10deg); opacity: 0; }
@@ -195,7 +219,7 @@ body {
     100% { transform: translate(-12px, -110vh) rotate(-6deg); opacity: 0; }
 }
 
-.lock.is-charging .floating-hearts span {
+.lock.is-charging .floating-hearts .heart {
     animation-duration: 6s;
 }
 

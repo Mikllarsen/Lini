@@ -12,8 +12,9 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&family=Inter:wght@400;500&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css">
-    <script src="script.js" defer></script>
+    <!-- Bump ?v= whenever styles.css or script.js change, so phones don't use an old cached copy -->
+    <link rel="stylesheet" href="styles.css?v=5">
+    <script src="script.js?v=5" defer></script>
 </head>
 <body>
 
@@ -25,7 +26,7 @@
 <!-- Lock screen -->
 <section id="lock-screen" class="screen lock">
     <div class="floating-hearts" aria-hidden="true">
-        <span>♥</span><span>♥</span><span>♥</span><span>♥</span><span>♥</span><span>♥</span><span>♥</span><span>♥</span>
+        <i class="heart"></i><i class="heart"></i><i class="heart"></i><i class="heart"></i><i class="heart"></i><i class="heart"></i><i class="heart"></i><i class="heart"></i>
     </div>
 
     <div class="lock-inner">
@@ -52,7 +53,7 @@
         <header class="letter-header">
             <p class="eyebrow">Til min elskede</p>
             <h1>Line</h1>
-            <span class="divider" aria-hidden="true">♥</span>
+            <span class="divider" aria-hidden="true"><i class="heart"></i></span>
         </header>
 
         <div class="letter-body">

@@ -94,6 +94,74 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    // ---------- Question before the heart (set in kode.js) ----------
+    const gate = document.getElementById('gate');
+    const gateInput = document.getElementById('gate-input');
+    const gateRow = document.getElementById('gate-row');
+    const gateMessage = document.getElementById('gate-message');
+    const holdArea = document.getElementById('hold-area');
+    const lockSub = document.getElementById('lock-sub');
+    const kode = typeof KODE !== 'undefined' ? KODE : null;
+
+    // Ignore case, extra spaces and a full stop at the end
+    const normalize = (text) => String(text)
+        .toLowerCase()
+        .normalize('NFC')
+        .replace(/\s+/g, ' ')
+        .trim()
+        .replace(/[.!?,]+$/, '')
+        .trim();
+
+    const answers = (kode && Array.isArray(kode.svar) ? kode.svar : [])
+        .map(normalize)
+        .filter(Boolean);
+
+    const WRONG = [
+        'Næ, prøv igen 😉',
+        'Tæt på… eller også ikke',
+        'Hmm, tænk lidt over den',
+        'Du ved det godt \u2665\uFE0E',
+    ];
+    let attempts = 0;
+
+    function showHold() {
+        if (lockSub) {
+            lockSub.innerHTML = 'Jeg har skrevet noget til dig.<br>Hold hjertet nede, så åbner det sig.';
+        }
+        if (gate) gate.hidden = true;
+        if (holdArea) holdArea.hidden = false;
+    }
+
+    if (!gate || !answers.length) {
+        showHold();
+    } else {
+        document.getElementById('gate-question').textContent = kode.spoergsmaal || '';
+
+        gate.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const value = normalize(gateInput.value);
+
+            if (answers.includes(value)) {
+                gateMessage.textContent = 'Rigtigt \u2665\uFE0E';
+                gateRow.classList.add('is-right');
+                gateInput.blur();
+                gate.classList.add('is-leaving');
+                setTimeout(showHold, 700);
+                return;
+            }
+
+            if (value) attempts++;
+            let message = value ? WRONG[(attempts - 1) % WRONG.length] : 'Du skal skrive noget 😉';
+            if (attempts >= 3 && kode.hint) message = `Hint: ${kode.hint}`;
+            gateMessage.textContent = message;
+
+            gateRow.classList.remove('is-wrong');
+            void gateRow.offsetWidth;
+            gateRow.classList.add('is-wrong');
+            if (navigator.vibrate) navigator.vibrate(60);
+        });
+    }
+
     // ---------- Hold to unlock ----------
     const button = document.getElementById('unlock-btn');
     const ring = document.getElementById('hold-ring-fill');

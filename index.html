@@ -12,10 +12,11 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;600&family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&family=Inter:wght@400;500&display=swap" rel="stylesheet">
-    <!-- Bump ?v= whenever styles.css, media.js or script.js change, so phones don't use an old cached copy -->
-    <link rel="stylesheet" href="styles.css?v=12">
-    <script src="media.js?v=12" defer></script>
-    <script src="script.js?v=12" defer></script>
+    <!-- Bump ?v= whenever styles.css, kode.js, media.js or script.js change, so phones don't use an old cached copy -->
+    <link rel="stylesheet" href="styles.css?v=13">
+    <script src="kode.js?v=13" defer></script>
+    <script src="media.js?v=13" defer></script>
+    <script src="script.js?v=13" defer></script>
 </head>
 <body>
 
@@ -33,18 +34,31 @@
     <div class="lock-inner">
         <p class="eyebrow">Fra Mikkel</p>
         <h1 class="lock-title">Til min elskede Lini</h1>
-        <p class="lock-sub">Jeg har skrevet noget til dig.<br>Hold hjertet nede, så åbner det sig.</p>
+        <p class="lock-sub" id="lock-sub">Jeg har skrevet noget til dig.<br>Men først skal du svare på et spørgsmål.</p>
 
-        <div class="hold" id="hold">
-            <svg class="hold-ring" viewBox="0 0 120 120" aria-hidden="true">
-                <circle class="hold-ring-track" cx="60" cy="60" r="54"/>
-                <circle class="hold-ring-fill" id="hold-ring-fill" cx="60" cy="60" r="54"/>
-            </svg>
-            <button id="unlock-btn" class="hold-btn" type="button" aria-label="Hold nede for at åbne">
-                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7.5-4.6-9.6-9.2C.9 8.4 3 4.5 6.7 4.5c2.1 0 3.6 1.2 4.3 2.4.4.7 1.6.7 2 0 .7-1.2 2.2-2.4 4.3-2.4 3.7 0 5.8 3.9 4.3 7.3C19.5 16.4 12 21 12 21z"/></svg>
-            </button>
+        <form class="gate" id="gate" autocomplete="off" novalidate>
+            <label class="gate-question" for="gate-input" id="gate-question"></label>
+            <div class="gate-row" id="gate-row">
+                <input class="gate-input" id="gate-input" type="text" placeholder="Skriv dit svar…" autocapitalize="none" autocorrect="off" spellcheck="false" enterkeyhint="go">
+                <button class="gate-btn" type="submit" aria-label="Åbn">
+                    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h13M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </button>
+            </div>
+            <p class="gate-message" id="gate-message" aria-live="polite"></p>
+        </form>
+
+        <div class="hold-area" id="hold-area" hidden>
+            <div class="hold" id="hold">
+                <svg class="hold-ring" viewBox="0 0 120 120" aria-hidden="true">
+                    <circle class="hold-ring-track" cx="60" cy="60" r="54"/>
+                    <circle class="hold-ring-fill" id="hold-ring-fill" cx="60" cy="60" r="54"/>
+                </svg>
+                <button id="unlock-btn" class="hold-btn" type="button" aria-label="Hold nede for at åbne">
+                    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7.5-4.6-9.6-9.2C.9 8.4 3 4.5 6.7 4.5c2.1 0 3.6 1.2 4.3 2.4.4.7 1.6.7 2 0 .7-1.2 2.2-2.4 4.3-2.4 3.7 0 5.8 3.9 4.3 7.3C19.5 16.4 12 21 12 21z"/></svg>
+                </button>
+            </div>
+            <p class="hold-hint" id="hold-hint" aria-live="polite">Hold nede</p>
         </div>
-        <p class="hold-hint" id="hold-hint" aria-live="polite">Hold nede</p>
     </div>
 </section>
 

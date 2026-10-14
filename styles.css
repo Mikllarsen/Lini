@@ -662,7 +662,8 @@ body {
     background: rgb(241 214 217 / 0.35);
 }
 
-.loves-title {
+.loves-title,
+.list-title {
     margin: 0 0 0.75rem;
     font-family: "Caveat", cursive;
     font-weight: 600;
@@ -670,6 +671,7 @@ body {
     line-height: 1.2;
     text-align: center;
     color: var(--rose-deep);
+    text-wrap: balance;
 }
 
 .loves-list {
@@ -695,6 +697,91 @@ body {
     font-size: 0.75rem;
     color: var(--rose);
     vertical-align: 0;
+}
+
+/* "Små ting du gør": handwritten notes along a margin line */
+.notes {
+    margin: 2.75rem 0;
+}
+
+.notes .list-title,
+.favorites .list-title,
+.looking-forward .list-title {
+    text-align: left;
+}
+
+.notes-list {
+    list-style: none;
+    margin: 0;
+    padding: 0.25rem 0 0.25rem 1.25rem;
+    border-left: 2px solid rgb(194 65 93 / 0.35);
+    display: grid;
+    gap: 0.6rem;
+}
+
+.notes-list li {
+    font-family: "Caveat", cursive;
+    font-size: 1.55rem;
+    line-height: 1.3;
+}
+
+/* "Yndlingsminder": stars inside a dashed frame */
+.favorites {
+    margin: 2.75rem 0;
+    padding: 1.5rem clamp(1.25rem, 4vw, 2rem) 1rem;
+    border: 1.5px dashed rgb(194 65 93 / 0.4);
+    border-radius: 6px;
+}
+
+.favorites-list,
+.todo-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.favorites-list li,
+.todo-list li {
+    display: flex;
+    gap: 0.9rem;
+    align-items: baseline;
+    padding: 0.5rem 0;
+}
+
+.star {
+    flex: none;
+    display: inline-block;
+    width: 0.85rem;
+    height: 0.85rem;
+    background: var(--rose);
+    -webkit-mask: var(--star-shape) center / contain no-repeat;
+    mask: var(--star-shape) center / contain no-repeat;
+}
+
+:root {
+    --star-shape: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M12 2l2.9 6.6 7.1.6-5.4 4.7 1.6 7L12 17.3 5.8 21l1.6-7L2 9.2l7.1-.6z'/%3E%3C/svg%3E");
+}
+
+/* "Glæder mig til": an unticked to-do list */
+.looking-forward {
+    margin: 2.75rem 0;
+}
+
+.checkbox {
+    flex: none;
+    width: 1rem;
+    height: 1rem;
+    border: 1.5px solid var(--rose);
+    border-radius: 3px;
+    transform: translateY(0.1em) rotate(-4deg);
+}
+
+.todo-list li:nth-child(even) .checkbox {
+    transform: translateY(0.1em) rotate(3deg);
+}
+
+.todo-list li + li {
+    border-top: 1px solid var(--line);
 }
 
 /* Photos and videos */

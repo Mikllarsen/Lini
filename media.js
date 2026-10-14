@@ -16,7 +16,7 @@
  * - Fjern linjer med "eksempel" når du har lagt dine egne ind.
  */
 const MINDER = [
-    { type: 'billede', fil: 'media/lini-1.jpg',     tekst: 'Verdens sødeste grimasse' },
+    { type: 'billede', fil: 'media/lini-1.jpg',     tekst: 'husk at skrive her' },
     { type: 'billede', fil: 'media/eksempel-2.jpg', tekst: 'husk at skrive her' },
     { type: 'video',   fil: 'media/eksempel-3.mp4', tekst: 'husk at skrive her' },
     { type: 'billede', fil: 'media/eksempel-4.jpg', tekst: 'husk at skrive her' },

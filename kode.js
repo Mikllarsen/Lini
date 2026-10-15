@@ -10,7 +10,12 @@
  * Sæt svar: [] for at slå spørgsmålet fra helt.
  */
 const KODE = {
-    spoergsmaal: 'Hvad var det første jeg skrev til dig?',
-    svar: ['you good', 'u good', 'yougood', 'you good?'],
-    hint: 'Det var på engelsk, og kun to ord',
+    spoergsmaal: 'Hvornår har jeg fødselsdag?',
+    svar: [
+        '21 juni', '21. juni', '21.juni', '21juni', '21 jun', '21. jun',
+        'den 21 juni', 'den 21. juni', 'd. 21 juni', 'd. 21. juni', 'd 21 juni',
+        'juni 21', 'enogtyvende juni', 'en og tyvende juni',
+        '21/6', '21/06', '21.6', '21.06', '21-6', '21-06', '21 6', '21 06', '2106',
+    ],
+    hint: 'Det er årets længste dag ☀️',
 };

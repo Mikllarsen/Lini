@@ -15,8 +15,8 @@
  * - Videoer skal helst være .mp4 og under 50 MB (GitHub tillader maks 100 MB).
  */
 const MINDER = [
-    { type: 'billede', fil: 'media/lini-1.jpg',   tekst: 'husk at skrive her' },
-    { type: 'billede', fil: 'media/lini-2.jpg',   tekst: 'husk at skrive her' },
-    { type: 'video',   fil: 'media/video-1.mp4',  tekst: 'husk at skrive her' },
-    { type: 'billede', fil: 'media/lini-3.jpg',   tekst: 'husk at skrive her' },
+    { type: 'billede', fil: 'media/lini-1.jpg',   tekst: 'Meget sødt og flot billed' },
+    { type: 'billede', fil: 'media/lini-2.jpg',   tekst: 'Første måneds dag sammen' },
+    { type: 'video',   fil: 'media/video-1.mp4',  tekst: 'så blir jeg sku slået :(' },
+    { type: 'billede', fil: 'media/lini-3.jpg',   tekst: 'et goated billed af ogs' },
 ];

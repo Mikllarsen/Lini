@@ -13,11 +13,10 @@
  *   virker i alle browsere. Vælg "Mest kompatibel" under Indstillinger →
  *   Kamera → Formater, eller send billedet til dig selv som JPG.
  * - Videoer skal helst være .mp4 og under 50 MB (GitHub tillader maks 100 MB).
- * - Fjern linjer med "eksempel" når du har lagt dine egne ind.
  */
 const MINDER = [
-    { type: 'billede', fil: 'media/lini-1.jpg',     tekst: 'husk at skrive her' },
-    { type: 'billede', fil: 'media/eksempel-2.jpg', tekst: 'husk at skrive her' },
-    { type: 'video',   fil: 'media/eksempel-3.mp4', tekst: 'husk at skrive her' },
-    { type: 'billede', fil: 'media/eksempel-4.jpg', tekst: 'husk at skrive her' },
+    { type: 'billede', fil: 'media/lini-1.jpg',   tekst: 'husk at skrive her' },
+    { type: 'billede', fil: 'media/lini-2.jpg',   tekst: 'husk at skrive her' },
+    { type: 'video',   fil: 'media/video-1.mp4',  tekst: 'husk at skrive her' },
+    { type: 'billede', fil: 'media/lini-3.jpg',   tekst: 'husk at skrive her' },
 ];
